@@ -1,5 +1,3 @@
-import {useLoaderData} from '@remix-run/react';
-import {type LoaderFunctionArgs, json} from '@shopify/remix-oxygen';
 import type {ShopFragment} from 'storefrontapi.generated';
 
 type MetaObject = {
@@ -21,28 +19,42 @@ type RichTextNode = {
 };
 
 export default function GlobalBanner({shop, globalBanner}: GlobalBannerPorps) {
+  const bannerContainerClass =
+    'w-full h-auto min-h-[50px] flex justify-center items-center text-center bg-primary px-2 py-1';
   if (!globalBanner) {
     return (
-      <div className="w-full flex justify-center bg-primary py-2">
-        <h3 className="text-primary-foreground text-sm flex">
-          Welcome to {shop.name}.
-        </h3>
+      <div className={bannerContainerClass}>
+        <WelcomeShop name={shop.name} />
       </div>
     );
   }
+  return (
+    <div className={bannerContainerClass}>
+      <PrintGlobalBanner globalBanner={globalBanner} />
+    </div>
+  );
+}
+
+const WelcomeShop = (shopName: {name: string}) => {
+  return (
+    <h3 className="text-primary-foreground text-sm flex">
+      Welcome to {shopName.name}.
+    </h3>
+  );
+};
+
+const PrintGlobalBanner = ({globalBanner}: {globalBanner: MetaObject}) => {
   const globalBannerData: RichTextNode = JSON.parse(
     globalBanner.metaobject.fields[0].value,
   ) as RichTextNode;
   const htmlResult: string = convertToHtml(globalBannerData);
   return (
-    <div className="w-full flex justify-center bg-primary py-2">
-      <div
-        className="text-primary-foreground text-sm flex"
-        dangerouslySetInnerHTML={{__html: htmlResult}}
-      ></div>
-    </div>
+    <div
+      className="text-primary-foreground text-sm flex"
+      dangerouslySetInnerHTML={{__html: htmlResult}}
+    ></div>
   );
-}
+};
 
 // Convert the rich text structure to HTML
 const convertToHtml = (node: RichTextNode): string => {
