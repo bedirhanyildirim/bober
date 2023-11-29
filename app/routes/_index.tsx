@@ -29,7 +29,7 @@ export default function Index() {
             Click me
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md h-full md:h-auto">
           <DialogHeader>
             <DialogTitle>Natalia look at this</DialogTitle>
             <DialogDescription>Innit aweseome?</DialogDescription>
@@ -46,6 +46,10 @@ export default function Index() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+      <div className="w-full bg-gray-300 h-96 flex items-center">Test 1</div>
+      <div className="w-full bg-gray-400 h-96 flex items-center">Test 2</div>
+      <div className="w-full bg-gray-300 h-96 flex items-center">Test 3</div>
+      <div className="w-full bg-gray-400 h-96 flex items-center">Test 4</div>
     </div>
   );
 }
