@@ -18,7 +18,7 @@ type HeaderProps = Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>;
 
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   return (
-    <div className="flex justify-center bg-background text-foreground h-[60px] sticky top-0 border-b">
+    <div className="flex justify-center bg-background text-foreground h-[60px] sticky top-0 border-b z-10">
       <DesktopHeader cart={cart} header={header} isLoggedIn={isLoggedIn} />
       <MobileHeader cart={cart} header={header} isLoggedIn={isLoggedIn} />
     </div>
