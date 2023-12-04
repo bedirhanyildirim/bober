@@ -21,8 +21,10 @@ export default function Index() {
   const data = useLoaderData<typeof loader>();
   return (
     <div>
-      <div className="w-full h-96 flex justify-center">
-        <div className="content-max-width flex items-center">Hero Section</div>
+      <div className="w-full h-96 flex justify-center  bg-primary text-primary-foreground">
+        <div className="content-max-width flex items-center">
+          <h1 className="text-4xl mb-8">Hero Section</h1>
+        </div>
       </div>
       <div className="w-full h-96 flex justify-center bg-gray-200">
         <div className="content-max-width flex flex-col">
