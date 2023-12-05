@@ -23,7 +23,7 @@ export default function Index() {
     <div>
       <div className="w-full h-96 flex justify-center  bg-primary text-primary-foreground">
         <div className="content-max-width flex items-center">
-          <h1 className="text-4xl mb-8">Hero Section</h1>
+          <h1 className="text-3xl md:text-4xl mb-8">Hero Section</h1>
         </div>
       </div>
       <div className="w-full h-96 flex justify-center bg-gray-200">
