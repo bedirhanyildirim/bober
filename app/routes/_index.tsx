@@ -2,6 +2,7 @@ import {Link, useLoaderData} from '@remix-run/react';
 import {type LoaderFunctionArgs, defer} from '@shopify/remix-oxygen';
 import type {FeaturedCollectionFragment} from 'storefrontapi.generated';
 import {Image} from '@shopify/hydrogen';
+import Certificates from '~/components/certificates';
 
 export function meta() {
   return [
@@ -41,8 +42,10 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <div className="w-full h-96 flex justify-center">
-        <div className="content-max-width flex items-center">Section 3</div>
+      <div className="w-full flex justify-center p-10 md:p-20 bg-white">
+        <div className="content-max-width flex items-center">
+          <Certificates />
+        </div>
       </div>
       <div className="w-full h-96 flex justify-center bg-gray-200">
         <div className="content-max-width flex items-center">Section 4</div>
