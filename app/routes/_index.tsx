@@ -3,6 +3,7 @@ import {type LoaderFunctionArgs, defer} from '@shopify/remix-oxygen';
 import type {FeaturedCollectionFragment} from 'storefrontapi.generated';
 import {Image} from '@shopify/hydrogen';
 import Certificates from '~/components/Certificates';
+import FeaturedCollections from '~/components/Home/FeaturedCollections';
 
 export function meta() {
   return [
@@ -27,7 +28,11 @@ export default function Index() {
           <h1 className="text-3xl md:text-4xl mb-8">Hero Section Title</h1>
         </div>
       </div>
-      <div className="w-full h-96 flex justify-center bg-gray-200">
+      <div className="w-full py-10 flex justify-center">
+        <div className="content-max-width flex flex-col">
+          <FeaturedCollections />
+        </div>
+      </div>
       <div className="w-full flex justify-center p-10 md:p-20 bg-white">
         <div className="content-max-width flex items-center">
           <Certificates />
