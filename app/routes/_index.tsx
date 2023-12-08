@@ -24,8 +24,11 @@ export default function Index() {
   return (
     <div>
       <div className="w-full h-96 flex justify-center  bg-primary text-primary-foreground">
-        <div className="content-max-width flex items-center">
-          <h1 className="text-3xl md:text-4xl mb-8">Hero Section Title</h1>
+        <div className="content-max-width flex flex-col justify-center">
+          <h1 className="text-3xl md:text-4xl mb-4">Hero Section Title</h1>
+          <div className="text-xl md:text-2xl text-gray-300">
+            Little description
+          </div>
         </div>
       </div>
       <div className="w-full py-10 flex justify-center">
