@@ -4,6 +4,7 @@ import type {FeaturedCollectionFragment} from 'storefrontapi.generated';
 import {Image} from '@shopify/hydrogen';
 import Certificates from '~/components/Certificates';
 import FeaturedCollections from '~/components/Home/FeaturedCollections';
+import {Button} from '~/components/ui/button';
 
 export function meta() {
   return [
@@ -23,13 +24,8 @@ export default function Index() {
   const data = useLoaderData<typeof loader>();
   return (
     <div>
-      <div className="w-full h-96 flex justify-center  bg-primary text-primary-foreground">
-        <div className="content-max-width flex flex-col justify-center">
-          <h1 className="text-3xl md:text-4xl mb-4">Hero Section Title</h1>
-          <div className="text-xl md:text-2xl text-gray-300">
-            Little description
-          </div>
-        </div>
+      <div className="w-full flex justify-center bg-primary text-primary-foreground">
+        <HeroSection />
       </div>
       <div className="w-full py-10 flex justify-center">
         <div className="content-max-width flex flex-col">
@@ -57,6 +53,39 @@ export default function Index() {
         </div>
       </div>
     </div>
+  );
+}
+
+function HeroSection() {
+  return (
+    <section
+      key="1"
+      className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-cover bg-center"
+      style={{
+        backgroundImage: 'url(/placeholder.svg?height=600&width=1200)',
+      }}
+    >
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center space-y-10 text-center">
+          <div className="space-y-6">
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none">
+              Hero Section
+            </h1>
+            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+              Discover our best selling products, one click away
+            </p>
+          </div>
+          <div className="w-full max-w-xs space-y-6">
+            <Button
+              className="w-full h-12 text-lg bg-secondary text-secondary-foreground"
+              type="submit"
+            >
+              Shop now
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
