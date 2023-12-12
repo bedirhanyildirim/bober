@@ -1,7 +1,16 @@
 import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import {Link, useLoaderData, type MetaFunction} from '@remix-run/react';
+import {useLoaderData, type MetaFunction, useNavigate} from '@remix-run/react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card';
 import {Image, Pagination, getPaginationVariables} from '@shopify/hydrogen';
 import type {ArticleItemFragment} from 'storefrontapi.generated';
+import {Button} from '~/components/ui/button';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.blog.title ?? ''} blog`}];
@@ -42,7 +51,7 @@ export default function Blog() {
     <div className="flex flex-col items-center">
       <div className="content-max-width my-4">
         <h1 className="my-4 border-b">{blog.title}</h1>
-        <div className="">
+        <div className="w-full grid gap-10 sm:gap-6 grid-cols-1 sm:grid-cols-3">
           <Pagination connection={articles}>
             {({nodes, isLoading, PreviousLink, NextLink}) => {
               return (
@@ -79,16 +88,21 @@ function ArticleItem({
   article: ArticleItemFragment;
   loading?: HTMLImageElement['loading'];
 }) {
+  const navigate = useNavigate();
   const publishedAt = new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   }).format(new Date(article.publishedAt!));
   return (
-    <div className="blog-article" key={article.id}>
-      <Link to={`/blogs/${article.blog.handle}/${article.handle}`}>
+    <div className="" key={article.id}>
+      <Card>
+        <CardHeader>
+          <CardTitle>{article.title}</CardTitle>
+          <CardDescription>{publishedAt}</CardDescription>
+        </CardHeader>
         {article.image && (
-          <div className="blog-article-image">
+          <CardContent>
             <Image
               alt={article.image.altText || article.title}
               aspectRatio="3/2"
@@ -96,11 +110,21 @@ function ArticleItem({
               loading={loading}
               sizes="(min-width: 768px) 50vw, 100vw"
             />
-          </div>
+          </CardContent>
         )}
-        <h3>{article.title}</h3>
-        <small>{publishedAt}</small>
-      </Link>
+        <CardFooter>
+          <Button
+            className="w-full"
+            variant="default"
+            size="default"
+            onClick={() => {
+              navigate(`/blogs/${article.blog.handle}/${article.handle}`);
+            }}
+          >
+            Read more
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
