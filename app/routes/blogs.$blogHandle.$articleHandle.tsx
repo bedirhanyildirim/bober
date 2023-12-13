@@ -40,14 +40,17 @@ export default function Article() {
     <div className="flex justify-center">
       <div className="content-max-width my-4">
         <div className="flex flex-col">
-          <h1 className="text-xl font-bold uppercase mb-2">
-            {title}
-            <span className="text-xs font-normal capitalize ml-4">
+          <h1 className="text-xl font-bold uppercase">{title}</h1>
+          <div className="mb-2">
+            <span className="text-xs text-gray-500 font-normal capitalize">
               {publishedDate} &middot; {author?.name}
             </span>
-          </h1>
-
-          {image && <Image data={image} sizes="90vw" loading="eager" />}
+          </div>
+          {image && (
+            <div className="mt-2 mb-8">
+              <Image data={image} sizes="90vw" loading="eager" />
+            </div>
+          )}
           <div
             dangerouslySetInnerHTML={{__html: contentHtml}}
             className="article"
