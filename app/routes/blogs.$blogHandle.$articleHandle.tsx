@@ -47,7 +47,7 @@ export default function Article() {
             </span>
           </div>
           {image && (
-            <div className="mt-2 mb-8">
+            <div className="mt-2 mb-8 max-h-96 overflow-hidden flex items-center">
               <Image data={image} sizes="90vw" loading="eager" />
             </div>
           )}
