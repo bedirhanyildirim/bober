@@ -37,7 +37,7 @@ export default function Index() {
           <Certificates />
         </div>
       </div>
-      <div className="w-full py-10 flex justify-center bg-gray-200">
+      {/* <div className="w-full py-10 flex justify-center bg-gray-200">
         <div className="content-max-width flex flex-col">
           <h2 className="mt-4 text-xl">Featured Collections</h2>
           <div className="flex flex-col md:flex-row w-full justify-between mt-4">
@@ -51,7 +51,7 @@ export default function Index() {
             })}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
