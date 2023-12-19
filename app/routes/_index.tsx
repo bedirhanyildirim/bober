@@ -27,11 +27,11 @@ export default function Index() {
       <div className="w-full flex justify-center bg-primary text-primary-foreground">
         <HeroSection />
       </div>
-      <div className="w-full py-10 flex justify-center">
+      {/*  <div className="w-full py-10 flex justify-center">
         <div className="content-max-width flex flex-col">
           <FeaturedCollections />
         </div>
-      </div>
+      </div> */}
       <div className="w-full flex justify-center p-10 md:p-20 bg-white">
         <div className="content-max-width flex items-center">
           <Certificates />
