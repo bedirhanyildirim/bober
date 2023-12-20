@@ -32,11 +32,11 @@ export default function Index() {
           <FeaturedCollections />
         </div>
       </div> */}
-      <div className="w-full flex justify-center p-10 md:p-20 bg-white">
+      {/* <div className="w-full flex justify-center p-10 md:p-20 bg-white">
         <div className="content-max-width flex items-center">
           <Certificates />
         </div>
-      </div>
+      </div> */}
       {/* <div className="w-full py-10 flex justify-center bg-gray-200">
         <div className="content-max-width flex flex-col">
           <h2 className="mt-4 text-xl">Featured Collections</h2>
