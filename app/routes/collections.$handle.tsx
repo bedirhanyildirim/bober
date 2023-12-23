@@ -6,6 +6,14 @@ import {
   Image,
   Money,
 } from '@shopify/hydrogen';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card';
 import type {ProductItemFragment} from 'storefrontapi.generated';
 import {useVariantUrl} from '~/utils';
 
@@ -40,30 +48,32 @@ export default function Collection() {
   const {collection} = useLoaderData<typeof loader>();
 
   return (
-    <div className="collection">
-      <h1>{collection.title}</h1>
-      <p className="collection-description">{collection.description}</p>
-      <Pagination connection={collection.products}>
-        {({nodes, isLoading, PreviousLink, NextLink}) => (
-          <>
-            <PreviousLink>
-              {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
-            </PreviousLink>
-            <ProductsGrid products={nodes} />
-            <br />
-            <NextLink>
-              {isLoading ? 'Loading...' : <span>Load more ↓</span>}
-            </NextLink>
-          </>
-        )}
-      </Pagination>
+    <div className="flex flex-col items-center">
+      <div className="content-max-width my-4">
+        <h1>{collection.title}</h1>
+        <p className="">{collection.description}</p>
+        <Pagination connection={collection.products}>
+          {({nodes, isLoading, PreviousLink, NextLink}) => (
+            <>
+              <PreviousLink>
+                {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
+              </PreviousLink>
+              <ProductsGrid products={nodes} />
+              <br />
+              <NextLink>
+                {isLoading ? 'Loading...' : <span>Load more ↓</span>}
+              </NextLink>
+            </>
+          )}
+        </Pagination>
+      </div>
     </div>
   );
 }
 
 function ProductsGrid({products}: {products: ProductItemFragment[]}) {
   return (
-    <div className="products-grid">
+    <div className="w-full grid gap-10 sm:gap-6 gric-cols-1 sm:grid-cols-3">
       {products.map((product, index) => {
         return (
           <ProductItem
@@ -88,19 +98,22 @@ function ProductItem({
   const variantUrl = useVariantUrl(product.handle, variant.selectedOptions);
   return (
     <Link
-      className="product-item"
+      className="w-full group transform-gpu"
       key={product.id}
       prefetch="intent"
       to={variantUrl}
     >
       {product.featuredImage && (
-        <Image
-          alt={product.featuredImage.altText || product.title}
-          aspectRatio="1/1"
-          data={product.featuredImage}
-          loading={loading}
-          sizes="(min-width: 45em) 400px, 100vw"
-        />
+        <div className="aspect-square w-full overflow-hidden">
+          <Image
+            alt={product.featuredImage.altText || product.title}
+            aspectRatio="1/1"
+            data={product.featuredImage}
+            loading={loading}
+            sizes="(min-width: 45em) 400px, 100vw"
+            className="group-hover:scale-105 transition-transform"
+          />
+        </div>
       )}
       <h4>{product.title}</h4>
       <small>
